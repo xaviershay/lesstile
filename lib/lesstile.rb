@@ -2,7 +2,7 @@ require 'cgi'
 require 'uri'
 
 class Lesstile
-  VERSION = '0.2'
+  VERSION = '0.3'
 
   class << self
     # Returns lesstile formatted text as valid XHTML

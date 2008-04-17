@@ -10,6 +10,7 @@ Integrates with CodeRay for sexy syntax highlighting.
 == SYNOPSIS:
 
   comment = <<-EOS
+  "Ego Link":http://rhnh.net
   Wow, this post is awesome. I'd implement it like this:
 
   --- Ruby

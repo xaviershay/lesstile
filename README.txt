@@ -36,9 +36,10 @@ Integrates with CodeRay for sexy syntax highlighting.
 
 * CodeRay (optional)
 
-== INSTALL:
+== INSTALL (pick one):
 
-  sudo gem install lesstile
+  sudo gem install lesstile                          # gem install
+  git clone git://github.com/xaviershay/lesstile.git # go from source
 
 == LICENSE:
 

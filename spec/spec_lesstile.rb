@@ -56,8 +56,17 @@ describe 'Lesstile default text formatter' do
   end
 
   it 'recognises links in text' do
-    @format['&quot;a link&quot;:http://example.com &quot;&lt;link&quot;:http://example.com linkage'].should == 
-      "<a href='http://example.com'>a link</a> <a href='http://example.com'>&lt;link</a> linkage"
+    @format[CGI::escapeHTML('"a link":http://example.com "<link":http://example.com linkage')].should == 
+      '<a href="http://example.com">a link</a> <a href="http://example.com">&lt;link</a> linkage'
+  end
+
+  it 'does not recognise blank links' do
+    text = '"":http://example.com'
+    @format[CGI::escapeHTML(text)].should == text
+  end
+
+  it 'unescapes " since it is not dangerous in plain text and allows us to use a simple regex for link formatting' do
+    @format["&quot;"].should == '"'
   end
 end
 

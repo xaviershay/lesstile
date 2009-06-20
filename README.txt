@@ -41,6 +41,8 @@ Integrates with CodeRay for sexy syntax highlighting.
   sudo gem install lesstile                          # gem install
   git clone git://github.com/xaviershay/lesstile.git # go from source
 
+Tested on ruby 1.8.6-339, 1.8.7-160 and 1.9.1-rc2
+
 == LICENSE:
 
 (The MIT License)

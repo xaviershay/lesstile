@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'spec'
 require File.dirname(__FILE__) + '/../lib/lesstile'
 
@@ -6,7 +7,7 @@ describe "Lesstile#format_as_xhtml" do
     @lesstile = Lesstile
     @format = lambda {|text| 
       @lesstile.format_as_xhtml(text, 
-        :code_formatter => lambda {|code, lang| "|#{code}|" },
+        :code_formatter => lambda {|code, lang| "|#{"(#{lang})" if lang}#{code}|" },
         :text_formatter => lambda {|text| text }
       )
     }
@@ -24,6 +25,18 @@ describe "Lesstile#format_as_xhtml" do
 
   it "surrounds code blocks in appropriate tags" do
     @format["---\nhello\n---\n"].should == "|hello\n|"
+  end
+  
+  it "parses code blocks with language specified" do
+    @format["--- abc\nhello\n---\n"].should == "|(abc)hello\n|"
+  end
+  
+  # spaces, dashes, plusses, normal, underscore, brackets, numbers, dots
+  ["Ruby on Rails", "Objective-C", "Objective-C++", 
+   "Python", "_SQL_", "(X)HTML", "CSS3", "Javascript1.2"].each do |language|
+    it "parses code blocks with language #{language}" do
+      @format["--- #{language}\nhello\n---\n"].should == "|(#{language.downcase})hello\n|"
+    end
   end
 
   it "parses code blocks at end of input" do

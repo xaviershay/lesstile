@@ -4,7 +4,7 @@ require 'uri'
 class Lesstile
   VERSION = '0.3'
 
-  CodeDetectionRegex = /---\s*?(\w*?)\s*?\n(.*?)---\n/m
+  CodeDetectionRegex = /---\s*?([\w\s\._+()-]*?)\s*?\n(.*?)---\n/m
 
   class << self
     # Returns lesstile formatted text as valid XHTML
@@ -24,7 +24,7 @@ class Lesstile
       while match = text.match(CodeDetectionRegex)
         captures = match.captures
         code = captures[1]
-        lang = blank?(captures[0]) ? nil : captures[0].downcase.intern
+        lang = blank?(captures[0]) ? nil : captures[0].downcase.strip.intern
 
         output += options[:text_formatter][match.pre_match] + options[:code_formatter][code, lang]
         text = match.post_match

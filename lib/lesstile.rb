@@ -4,6 +4,8 @@ require 'uri'
 class Lesstile
   VERSION = '0.3'
 
+  CodeDetectionRegex = /---\s*?(\w*?)\s*?\n(.*?)---\n/m
+
   class << self
     # Returns lesstile formatted text as valid XHTML
     #
@@ -17,10 +19,9 @@ class Lesstile
       text.gsub!(/\r\n/, "\n")
       text = CGI::escapeHTML(text)
 
-      code_regex = /---\s*?(\w*?)\s*?\n(.*?)---\n/m
       output = ""
 
-      while match = text.match(code_regex)
+      while match = text.match(CodeDetectionRegex)
         captures = match.captures
         code = captures[1]
         lang = blank?(captures[0]) ? nil : captures[0].downcase.intern

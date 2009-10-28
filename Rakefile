@@ -23,5 +23,5 @@ Spec::Rake::SpecTask.new do |t|
   t.spec_files = FileList['spec/spec_*.rb']
 end
 
-task :test => :spec
-# vim: syntax=Ruby
+task :test    => :spec
+task :default => :spec

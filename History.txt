@@ -9,3 +9,9 @@
 == 0.3 / 2008-04-17
 
 * Allow textile style links in text - "link":http://rhnh.net
+
+== 1.0 / 2010-09-15
+
+* Added #format_as_html method
+* Switch to semantic versioning
+* Removed dependency on Jeweler

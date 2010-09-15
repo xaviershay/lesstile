@@ -2,7 +2,7 @@ require 'cgi'
 require 'uri'
 
 class Lesstile
-  VERSION = '0.3'
+  VERSION = '1.0'
 
   CodeDetectionRegex = /---\s*?([\w\s\._+()-]*?)\s*?\n(.*?)---\n/m
 

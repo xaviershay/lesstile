@@ -26,12 +26,24 @@ class Lesstile
         code = captures[1]
         lang = blank?(captures[0]) ? nil : captures[0].downcase.strip.intern
 
-        output += options[:text_formatter][match.pre_match] + options[:code_formatter][code, lang]
+        output += 
+          options[:text_formatter][match.pre_match] +
+          options[:code_formatter][code, lang]
+
         text = match.post_match
       end
       
       output += options[:text_formatter][text.chomp]
       output
+    end
+
+    # Returns lesstile formatted text as valid HTML5
+    #
+    # options (all optional):
+    # * <tt>text_formatter</tt>: A callback function used to format text.
+    # * <tt>code_formatter</tt>: A callback function used to format code. Typically used for syntax highlighting.
+    def format_as_html(text, options = {})
+      format_as_xhtml(text, options)
     end
   
     def default_options
@@ -62,5 +74,7 @@ class Lesstile
   end
 
   # A formatter that syntax highlights code using CodeRay
-  CodeRayFormatter = lambda {|code, lang| CodeRay.scan(CGI::unescapeHTML(code), lang).html(:line_numbers => :table).div }
+  CodeRayFormatter = lambda {|code, lang| 
+    CodeRay.scan(CGI::unescapeHTML(code), lang).html(:line_numbers => :table).div 
+  }
 end

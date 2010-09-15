@@ -2,17 +2,7 @@ require 'rubygems'
 require 'spec'
 require File.dirname(__FILE__) + '/../lib/lesstile'
 
-describe "Lesstile#format_as_xhtml" do
-  before(:all) do
-    @lesstile = Lesstile
-    @format = lambda {|text| 
-      @lesstile.format_as_xhtml(text, 
-        :code_formatter => lambda {|code, lang| "|#{"(#{lang})" if lang}#{code}|" },
-        :text_formatter => lambda {|text| text }
-      )
-    }
-  end
-
+describe 'an html formatter', :shared => true do
   it "normal text unchanged" do
     @format["hello"].should == "hello"
   end
@@ -61,6 +51,34 @@ describe "Lesstile#format_as_xhtml" do
   it 'escapes quotes' do 
     @format['"'].should == "&quot;"
   end
+end
+
+describe "Lesstile#format_as_xhtml" do
+  before(:all) do
+    @lesstile = Lesstile
+    @format = lambda {|text| 
+      @lesstile.format_as_xhtml(text, 
+        :code_formatter => lambda {|code, lang| "|#{"(#{lang})" if lang}#{code}|" },
+        :text_formatter => lambda {|text| text }
+      )
+    }
+  end
+
+  it_should_behave_like 'an html formatter'
+end
+
+describe "Lesstile#format_as_html" do
+  before(:all) do
+    @lesstile = Lesstile
+    @format = lambda {|text| 
+      @lesstile.format_as_html(text, 
+        :code_formatter => lambda {|code, lang| "|#{"(#{lang})" if lang}#{code}|" },
+        :text_formatter => lambda {|text| text }
+      )
+    }
+  end
+
+  it_should_behave_like 'an html formatter'
 end
 
 describe 'Lesstile default text formatter' do

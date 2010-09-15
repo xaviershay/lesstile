@@ -3,7 +3,7 @@ by Xavier Shay (http://rhnh.net)
 
 == DESCRIPTION:
   
-Converts text formatted with an exceedingly simple markup language into XHTML (iron clad guarantee!) - perfect for comments on your blog. Textile isn't good for this because not only does it do too much (do commenters really need subscript?), but it can also output invalid HTML (try a <b> tag over multiple lines...). Whitelisting HTML is another option, but you still need some sort of parsing if you want syntax highlighting.
+Converts text formatted with an exceedingly simple markup language into valid HTML (iron clad guarantee!) - perfect for comments on your blog. Textile isn't good for this because not only does it do too much (do commenters really need subscript?), but it can also output invalid HTML (try a <b> tag over multiple lines...). Whitelisting HTML is another option, but you still need some sort of parsing if you want syntax highlighting.
 
 Integrates with CodeRay for sexy syntax highlighting.
 
@@ -28,9 +28,12 @@ Integrates with CodeRay for sexy syntax highlighting.
   ---
   EOS
 
+  Lesstile.format_as_html(comment)
+  Lesstile.format_as_html(comment, :code_formatter => Lesstile::CodeRayFormatter) # Requires code ray
+  Lesstile.format_as_html(comment, :code_formatter => lambda {|code, lang| "Code in #{lang}: #{code}" })
+
+  # Also XHTML, for the old schoolers
   Lesstile.format_as_xhtml(comment)
-  Lesstile.format_as_xhtml(comment, :code_formatter => Lesstile::CodeRayFormatter) # Requires code ray
-  Lesstile.format_as_xhtml(comment, :code_formatter => lambda {|code, lang| "Code in #{lang}: #{code}" })
 
 == REQUIREMENTS:
 
@@ -41,7 +44,7 @@ Integrates with CodeRay for sexy syntax highlighting.
   sudo gem install lesstile                          # gem install
   git clone git://github.com/xaviershay/lesstile.git # go from source
 
-Tested on ruby 1.8.6-339, 1.8.7-160 and 1.9.1-rc2
+Tested on ruby 1.8.6-339, 1.8.7-160, 1.9.1-rc2, and 1.9.2-p0
 
 == LICENSE:
 

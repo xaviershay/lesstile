@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'spec'
-require File.dirname(__FILE__) + '/../lib/lesstile'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/lesstile')
 
 describe 'an html formatter', :shared => true do
   it "normal text unchanged" do

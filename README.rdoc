@@ -45,4 +45,4 @@ Pick one:
   sudo gem install lesstile                          # gem install
   git clone git://github.com/xaviershay/lesstile.git # go from source
 
-Tested on ruby 1.8.6-339, 1.8.7-160, 1.9.1-rc2, and 1.9.2-p0
+Tested on 1.8.7-p302, 1.9.2-p0, jruby 1.5.1, and rbx 1.1

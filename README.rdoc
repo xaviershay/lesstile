@@ -32,6 +32,10 @@ Integrates with CodeRay for sexy syntax highlighting.
   # Also XHTML, for the old schoolers
   Lesstile.format_as_xhtml(comment)
 
+== Status
+
+Lesstile is used by the enki blogging engine, which has many production deployments. The current release is 1.0.0 and considered stable.
+
 == Requirements
 
 Provides a CodeRay syntax highlighter, but you need to have the gem installed to use it.

@@ -1,8 +1,7 @@
-require 'rubygems'
-require 'spec'
+require 'rspec'
 require File.expand_path(File.dirname(__FILE__) + '/../lib/lesstile')
 
-describe 'an html formatter', :shared => true do
+shared_examples_for 'an html formatter' do
   it "normal text unchanged" do
     @format["hello"].should == "hello"
   end

@@ -15,3 +15,7 @@
 * Added #format_as_html method
 * Switch to semantic versioning
 * Removed dependency on Jeweler
+
+== 1.0.1 / 2011-02-04
+
+* rubygems-test compat

@@ -75,6 +75,6 @@ class Lesstile
 
   # A formatter that syntax highlights code using CodeRay
   CodeRayFormatter = lambda {|code, lang| 
-    CodeRay.scan(CGI::unescapeHTML(code), lang).html(:line_numbers => :table).div 
+    CodeRay.scan(CGI::unescapeHTML(code), lang).div(:line_numbers => :table)
   }
 end

@@ -36,7 +36,7 @@ Integrates with CodeRay for sexy syntax highlighting.
   s.test_files = [
     "spec/lesstile_spec.rb"
   ]
-  s.add_development_dependency 'rspec', '~> 2.0.1'
+  s.add_development_dependency 'rspec', '~> 2.11'
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION

@@ -19,3 +19,7 @@
 == 1.0.1 / 2011-02-04
 
 * rubygems-test compat
+
+== 1.1.0 / 2012-08-10
+
+* CodeRay 1.0.5 compat
